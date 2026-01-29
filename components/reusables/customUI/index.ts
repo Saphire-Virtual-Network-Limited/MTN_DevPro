@@ -1,5 +1,3 @@
-import Header from "./header";
-import { BackButton } from "./backButton";
-import { ContinueResetBtn } from "./continueResetBtn";
-
-export { Header, BackButton, ContinueResetBtn };
+import { CustomBtn } from "./CustomBtn";
+import { Layout } from "./Layout";
+export { CustomBtn, Layout };

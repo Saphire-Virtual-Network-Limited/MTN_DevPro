@@ -6,7 +6,7 @@ import { Label } from "@/components/ui/label";
 
 interface SelectFieldProps {
   label: string;
-  htmlFor: string;
+  htmlFor?: string;
   id: string;
   isInvalid?: boolean;
   errorMessage?: string;

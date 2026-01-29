@@ -1,6 +1,6 @@
-import { SwapDeviceView } from "./SwapDeviceView";
-import { OldDeviceView } from "./OldDeviceView";
+import Welcome from "./WelcomeView";
+import VerifyOTP from "./VerifyOtpView";
 import { DeviceDetailView } from "./DeviceDetail";
-import { CustomerDetailView } from "./CustomerDetailView";
+import OrderSummaryView from "./OrderSummary";
 
-export { SwapDeviceView, OldDeviceView, DeviceDetailView, CustomerDetailView };
+export { Welcome, VerifyOTP, DeviceDetailView, OrderSummaryView };

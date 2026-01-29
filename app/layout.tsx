@@ -4,7 +4,6 @@ import { GoogleTagManager, GoogleAnalytics } from "@next/third-parties/google";
 import { Toaster } from "sonner";
 import "./globals.css";
 import NextTopLoader from "nextjs-toploader";
-import { Header } from "@/components/reusables";
 import DynamicSeo from "@/lib/dynamicSeo";
 
 
@@ -41,8 +40,9 @@ export default function RootLayout({
 						showSpinner={false}
 						easing="ease"
 					/>
-					<Header />
-					<MaxWidthWrapper>{children}</MaxWidthWrapper>
+					<MaxWidthWrapper>
+						{children}
+					</MaxWidthWrapper>
 
 					<Toaster
 						position="top-right"

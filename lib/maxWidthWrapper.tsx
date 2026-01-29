@@ -2,44 +2,57 @@
 
 import { ReactNode } from "react";
 import { cn } from "./utils";
-import { Image, HeroUIProvider } from "@heroui/react";
-import Link from "next/link";
+import { HeroUIProvider } from "@heroui/react";
+import { Sidebar } from "@/components/reusables/customUI/Sidebar";
+import Preloader from "@/components/reusables/customUI/Preloader";
+import Image from "next/image";
 
-export function MaxWidthWrapper({ className, children }: { className?: string; children: ReactNode }) {
+export function MaxWidthWrapper({
+	className,
+	children,
+}: {
+	className?: string;
+	children: ReactNode;
+}) {
 	return (
-		<main className={cn("", className)}>
+		<main className={cn("min-h-screen bg-white", className)}>
 			<HeroUIProvider>
-				<div className="flex lg:flex-row flex-col h-full lg:h-screen overflow-hidden bg-white">
+				<Preloader />
 
-					{/* company logo on mobile */}
-					<div className="flex lg:hidden items-center justify-center">
-						<Link href="/">
-							<Image
-								src="/sapphire-credit.png"
-								alt="Sapphire Logo"
-								className="w-36 h-36 object-contain"
-								width={144}
-								height={144}
-							//priority
-							/>
-						</Link>
+				<div className="flex">
+					{/* Fixed Sidebar - Hidden on mobile */}
+					<div className="hidden lg:block">
+						<Sidebar />
 					</div>
 
-					<div className="hidden lg:flex w-1/2 flex-col relative">
-						<div className="flex-1 flex items-center justify-center max-w-[585px]">
-							<Image
-								src="/fold-7.png"
-								alt="men-in-suit"
-								className="w-full h-auto object-contain rounded-none"
-							/>
+					{/* Scrollable Content Area */}
+					<div
+						className="w-full lg:ml-[40%] lg:w-3/5 min-h-screen overflow-y-scroll"
+						style={{
+							scrollbarWidth: 'thin',
+							scrollbarColor: '#CBD5E0 #F7FAFC'
+						}}
+					>
+						<div
+							tabIndex={0}
+							className="max-w-md mx-auto py-8 lg:py-12 px-4 focus:outline-none"
+						>
+							{/* Mobile Logo */}
+							<div className="flex lg:hidden items-center justify-center mb-4">
+								<div className="w-48 h-16 relative">
+									<Image
+										src="/mtn-sapphire.png"
+										alt="MTN-Sapphire"
+										fill
+										sizes="192px"
+										className="object-contain"
+										priority
+									/>
+								</div>
+							</div>
+
+							{children}
 						</div>
-
-
-					</div>
-
-					{/* Right Side text */}
-					<div className="w-full lg:w-1/2 flex bg-white px-4 lg:px-0">
-						{children}
 					</div>
 				</div>
 			</HeroUIProvider>

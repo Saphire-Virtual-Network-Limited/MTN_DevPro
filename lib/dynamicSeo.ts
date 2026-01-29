@@ -14,7 +14,7 @@ const DynamicSeo = (index: number): Metadata => {
     keywords: currentSeoData.LAYOUT_KEYWORDS || "",
     authors: [
       {
-        name: "SapphireCredit Exchange",
+        name: "SapphireCredit Device Protection",
         url: "https://samsung-fold-7.connectwithsapphire.com/",
       },
     ],
