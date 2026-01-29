@@ -43,9 +43,46 @@ export default function Welcome() {
 
 
 
-  const handleContinue = (e: React.FormEvent) => {
+  const handleContinue = async (e: React.FormEvent) => {
     e.preventDefault();
 
+    // Validate all fields before proceeding
+    if (firstNameError || lNameError || phoneError || emailError || !selectedState) {
+      return;
+    }
+
+    setIsLoading(true);
+
+    try {
+      // Dummy API call - simulating a 2 second delay
+      await new Promise((resolve) => setTimeout(resolve, 2000));
+
+      // Simulate API request payload
+      const payload = {
+        firstName,
+        lastName: lName,
+        phone,
+        email,
+        state: selectedState.state
+      };
+
+      console.log("Sending data:", payload);
+
+      // Simulate successful response
+      const response = {
+        success: true,
+        message: "OTP sent successfully"
+      };
+
+      if (response.success) {
+        setSuccessModal(true);
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      // Handle error appropriately - you can add error state and display here
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const handleStateSelection = async (selected: StateType) => {
@@ -160,24 +197,28 @@ export default function Welcome() {
 
       <Dialog open={successModal} onOpenChange={setSuccessModal}>
         <DialogContent className="max-w-md w-full !rounded-[20px] p-8 text-center">
-          <DialogTitle>
-            <Image
-              src="/success-check.svg"
-              alt="Success"
-              fill
-              className="object-contain"
-            />
-          </DialogTitle>
-          <div className="space-y-4">
-            <p className={cn(`text-base font-normal text-[#1F2937]`, Figtree_Regular.className)}>
-              A verification code has been sent to your phone number
-            </p>
-            <Button
-              onPress={handleCloseSuccess}
-              className={cn(`w-1/5  bg-[#0F52BA] text-white font-semibold py-3 px-6 rounded-md`, Figtree_SemiBold.className)}
-            >
-              Ok
-            </Button>
+          <div className="flex flex-col items-center gap-6">
+            <DialogTitle className="sr-only">Success</DialogTitle>
+            <div className="relative w-16 h-16 mx-auto">
+              <Image
+                src="/success-check.svg"
+                alt="Success"
+                width={64}
+                height={64}
+                className="object-contain"
+              />
+            </div>
+            <div className="space-y-6 w-full">
+              <p className={cn(`text-base font-normal text-[#1F2937]`, Figtree_Regular.className)}>
+                A verification code has been sent to your phone number
+              </p>
+              <Button
+                onPress={handleCloseSuccess}
+                className={cn(`w-1/5 bg-[#0F52BA] text-white font-semibold py-3 px-6 rounded-md`, Figtree_SemiBold.className)}
+              >
+                Ok
+              </Button>
+            </div>
           </div>
         </DialogContent>
       </Dialog>

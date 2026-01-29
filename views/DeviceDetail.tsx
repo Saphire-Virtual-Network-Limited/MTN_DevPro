@@ -60,7 +60,7 @@ export function DeviceDetailView() {
     setTimeout(() => {
       setIsSubmitting(false);
       showToast({ message: "Device details saved successfully!", type: "success" });
-      router.push("/summary");
+      router.push("/order-summary");
     }, 1500);
   };
 

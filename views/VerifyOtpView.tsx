@@ -53,7 +53,7 @@ export default function VerifyOTP() {
 
   const handleCloseSuccess = () => {
     setSuccessModal(false);
-    router.push("/device-detail");
+    router.push("/device-details");
   };
   return (
     <>
@@ -107,27 +107,31 @@ export default function VerifyOTP() {
 
       <Dialog open={successModal} onOpenChange={setSuccessModal}>
         <DialogContent className="max-w-md w-full !rounded-[20px] p-8 text-center">
-          <DialogTitle>
-            <Image
-              src="/success-check.svg"
-              alt="Success"
-              fill
-              className="object-contain"
-            />
-          </DialogTitle>
-          <div className="space-y-4">
+          <div className="flex flex-col items-center gap-6">
+            <DialogTitle className="sr-only">Success</DialogTitle>
+            <div className="relative w-16 h-16 mx-auto">
+              <Image
+                src="/success-check.svg"
+                alt="Success"
+                width={64}
+                height={64}
+                className="object-contain"
+              />
+            </div>
+            <div className="space-y-4">
 
 
-            <p className={cn(`text-base font-normal text-[#1F2937]`, Figtree_Regular.className)}>
+              <p className={cn(`text-base font-normal text-[#1F2937]`, Figtree_Regular.className)}>
 
-              OTP verification was successful!
-            </p>
-            <Button
-              onPress={handleCloseSuccess}
-              className={cn(`w-1/5  bg-[#0F52BA] text-white font-semibold py-3 px-6 rounded-md`, Figtree_SemiBold.className)}
-            >
-              Ok
-            </Button>
+                OTP verification was successful!
+              </p>
+              <Button
+                onPress={handleCloseSuccess}
+                className={cn(`w-1/5  bg-[#0F52BA] text-white font-semibold py-3 px-6 rounded-md`, Figtree_SemiBold.className)}
+              >
+                Ok
+              </Button>
+            </div>
           </div>
         </DialogContent>
       </Dialog>
