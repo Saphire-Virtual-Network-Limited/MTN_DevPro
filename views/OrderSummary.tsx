@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { CustomBtn } from '@/components/reusables';
-import { ChevronLeft } from 'lucide-react';
+import { ChevronLeft, Download } from 'lucide-react';
 import { cn, Figtree_Medium, Figtree_Regular, Figtree_SemiBold } from '@/lib';
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import Image from 'next/image';
@@ -350,6 +350,15 @@ export default function OrderSummaryView() {
                 className="object-contain"
               />
             </div>
+
+            <a
+              href="/congrats.png"
+              download="mtn-devpro-congratulations.png"
+              className={cn(`inline-flex items-center gap-2 text-sm text-[#0F52BA] font-semibold hover:underline`, Figtree_SemiBold.className)}
+            >
+              <Download className="w-4 h-4" />
+              Download image
+            </a>
           </DialogTitle>
           <div className="space-y-4">
 
